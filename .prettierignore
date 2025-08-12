@@ -1,0 +1,23 @@
+# dependencies
+node_modules
+
+# builds / coverage
+build
+out
+dist
+coverage
+
+# IDE
+.vscode
+.idea
+
+# artifacts
+*.log
+
+# shared components submodule
+shared-components
+shared-components/**
+
+# Cypress outputs
+cypress/videos
+cypress/screenshots

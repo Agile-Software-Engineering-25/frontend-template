@@ -19,6 +19,23 @@ npm i
 - `npm run cy:run` - run all tests with a headless browser
 - `npm run updateSharedComponents` - update the shared-components library to the newest version
 
+## Prettier (formatting)
+
+Prettier is configured but not auto-running. Use these when you're ready:
+
+- VS Code: install the recommended extension and run "Format Document" or enable Format on Save via:
+- VS Code: add the following to your settings.json:
+  ```json
+  "prettier.configPath": ".prettierrc",
+  "prettier.ignorePath": ".prettierignore",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+  ```
+- IntelliJ/WebStorm: Install the Extension if you have Intellij Ultimate, set Prettier package to the project node_modules and enable "On save" if desired.
+- CLI Alternative: Run `npm run format` or `npm run lint:fix` to apply. Run `npm run format:check` to see Files with wrong formatting. Run `npm run lint` to see linting errors and specific Prettier errors per Line.
+
+Note: the `shared-components/` submodule is excluded from Prettier and will not be formatted.
+
 # Technologies
 
 ## File-Structure

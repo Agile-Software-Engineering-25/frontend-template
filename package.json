@@ -12,7 +12,11 @@
     "cy:open": "cypress open",
     "cy:run": "cypress run",
     "init": "sh ./scripts/prepare.sh",
-    "updateSharedComponents": "sh ./scripts/updateSharedComponents.sh"
+    "updateSharedComponents": "sh ./scripts/updateSharedComponents.sh",
+    "prettier:check": "prettier --cache --check .",
+    "prettier:write": "prettier --cache --write .",
+    "format": "npm run prettier:write",
+    "format:check": "npm run prettier:check"
   },
   "dependencies": {
     "@agile-software/shared-components": "file:./shared-components",
@@ -57,7 +61,6 @@
     "eslint": "^9.33.0",
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-prettier": "^5.5.4",
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
