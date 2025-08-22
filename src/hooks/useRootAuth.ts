@@ -1,19 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 
-interface AuthData {
-  token: string | null;
-  user: {
-    id: string | null;
-    name: string | null;
-    email: string | null;
-  };
-  isAuthenticated: boolean;
-  isLoading: boolean;
-  error: string | null;
-}
+import type { AuthContextProps } from 'react-oidc-context';
+
 
 export const useRootAuth = () => {
-  const [auth, setAuth] = useState<AuthData | null>(null);
+  const [auth, setAuth] = useState<AuthContextProps | null>(null);
   const requestSent = useRef(false);
 
   useEffect(() => {
@@ -48,17 +39,10 @@ export const useRootAuth = () => {
 
     requestSent.current = true;
 
-    return () => {
-      window.removeEventListener(
-        'root-auth-response',
-        handleAuthResponse as EventListener
-      );
-      window.removeEventListener(
-        'root-auth-update',
-        handleAuthUpdate as EventListener
-      );
-    };
-  }, []);
+        return () => {
+            window.removeEventListener('root-auth-update', handleAuthUpdate as EventListener);
+        };
+    }, []);
 
-  return auth;
+    return auth;
 };
