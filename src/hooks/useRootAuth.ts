@@ -1,7 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-
 import type { AuthContextProps } from 'react-oidc-context';
-
 
 export const useRootAuth = () => {
   const [auth, setAuth] = useState<AuthContextProps | null>(null);
@@ -39,10 +37,13 @@ export const useRootAuth = () => {
 
     requestSent.current = true;
 
-        return () => {
-            window.removeEventListener('root-auth-update', handleAuthUpdate as EventListener);
-        };
-    }, []);
+    return () => {
+      window.removeEventListener(
+        'root-auth-update',
+        handleAuthUpdate as EventListener
+      );
+    };
+  }, []);
 
-    return auth;
+  return auth;
 };
