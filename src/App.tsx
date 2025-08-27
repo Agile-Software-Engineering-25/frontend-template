@@ -35,9 +35,7 @@ type AppProps = {
 /**
  * @param props - AppProps, also contains all customProps delivered from the rootUi
  */
-function App(
-  props: AppProps
-) {
+function App(props: AppProps) {
   const { basename } = props;
   return (
     <Provider store={store}>
