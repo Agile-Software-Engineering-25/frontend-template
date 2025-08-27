@@ -32,12 +32,15 @@ type AppProps = {
   basename?: string;
 };
 
-function App({ basename }: AppProps) {
+function App(
+  props /* props also contains all customProps delivered from the rootUi */ : AppProps
+) {
+  const { basename } = props;
   return (
     <Provider store={store}>
       <ThemeProvider theme={{ [MATERIAL_THEME_ID]: theme }}>
         <JoyCssVarsProvider>
-          <BrowserRouter basename={basename}>
+          <BrowserRouter basename={basename ?? '/'}>
             <RoutingComponent />
           </BrowserRouter>
         </JoyCssVarsProvider>
