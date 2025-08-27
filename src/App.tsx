@@ -32,8 +32,11 @@ type AppProps = {
   basename?: string;
 };
 
+/**
+ * @param props - AppProps, also contains all customProps delivered from the rootUi
+ */
 function App(
-  props /* props also contains all customProps delivered from the rootUi */ : AppProps
+  props: AppProps
 ) {
   const { basename } = props;
   return (
