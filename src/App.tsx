@@ -33,7 +33,7 @@ type AppProps = {
 };
 
 /**
- * @param props - AppProps, also contains all customProps delivered from the rootUi
+ * @param props - AppProps, contains customProps delivered from the rootUi (user is handled separately via useUser hook)
  */
 function App(props: AppProps) {
   const { basename } = props;
