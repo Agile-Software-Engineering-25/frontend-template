@@ -22,7 +22,7 @@ const Home = () => {
         {t('pages.home.welcomeMessage', { name: user.getFullName() })}
       </Typography>
       <Typography>E-Mail: {user.getEmail()}</Typography>
-      <Typography>Access Token: {user.getAccessToken()}</Typography>
+      <Typography sx={{ wordBreak: 'break-word' }}>Access Token: {user.getAccessToken()}</Typography>
       <Typography>
         Has role testabc: {user.hasRole('testabc') ? 'Yes' : 'No'}
       </Typography>
