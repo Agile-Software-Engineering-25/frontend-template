@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { User } from "oidc-client-ts";
+import { User } from 'oidc-client-ts';
 import { jwtDecode } from 'jwt-decode';
 
 // Global user state
@@ -9,7 +9,7 @@ let subscribers: Array<(user: User | null) => void> = [];
 // Function to set user data (called from singleSpa.tsx)
 export const setGlobalUser = (user: User | null) => {
   globalUser = user;
-  subscribers.forEach(callback => callback(user));
+  subscribers.forEach((callback) => callback(user));
 };
 
 // Custom hook to access user data
@@ -22,7 +22,7 @@ export const useUser = () => {
     };
     subscribers.push(unsubscribe);
     return () => {
-      subscribers = subscribers.filter(callback => callback !== unsubscribe);
+      subscribers = subscribers.filter((callback) => callback !== unsubscribe);
     };
   }, []);
 
@@ -57,7 +57,7 @@ export const useUser = () => {
 
     if (!Array.isArray(roles) || roles.length === 0) return false;
     return roles.includes(role);
-  }
+  };
 
   return {
     user,

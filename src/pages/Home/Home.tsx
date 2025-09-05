@@ -18,11 +18,17 @@ const Home = () => {
       </Button>
       <LanguageSelectorComponent />
 
-      <Typography>{t('pages.home.welcomeMessage', { name: user.getFullName() })}</Typography>
-      <Typography>E-Mail: { user.getEmail() }</Typography>
-      <Typography>Access Token: { user.getAccessToken() }</Typography>
-      <Typography>Has role testabc: { user.hasRole('testabc') ? 'Yes' : 'No' }</Typography>
-      <Typography>Has role testdef: { user.hasRole('testdef') ? 'Yes' : 'No' }</Typography>
+      <Typography>
+        {t('pages.home.welcomeMessage', { name: user.getFullName() })}
+      </Typography>
+      <Typography>E-Mail: {user.getEmail()}</Typography>
+      <Typography>Access Token: {user.getAccessToken()}</Typography>
+      <Typography>
+        Has role testabc: {user.hasRole('testabc') ? 'Yes' : 'No'}
+      </Typography>
+      <Typography>
+        Has role testdef: {user.hasRole('testdef') ? 'Yes' : 'No'}
+      </Typography>
     </Box>
   );
 };
