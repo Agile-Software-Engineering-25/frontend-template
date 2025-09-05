@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { User } from "oidc-client-ts";
+import { jwtDecode } from 'jwt-decode';
 
 // Global user state
 let globalUser: User | null = null;
@@ -45,9 +46,18 @@ export const useUser = () => {
     return user?.access_token ?? '';
   };
 
+  // Function to check if user has a specific role
   const hasRole = (role: string): boolean => {
-    return false; // ToDo: Implement role checking logic based on your user profile structure
-  };
+    const token = getAccessToken();
+    if (!token) return false;
+
+    // Decode JWT to extract roles
+    const decoded: any = jwtDecode(token);
+    const roles: string[] = decoded?.realm_access?.roles || [];
+
+    if (!Array.isArray(roles) || roles.length === 0) return false;
+    return roles.includes(role);
+  }
 
   return {
     user,
