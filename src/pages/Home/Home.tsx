@@ -3,10 +3,12 @@ import LanguageSelectorComponent from '@components/LanguageSelectorComponent/Lan
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { Button } from '@mui/material';
+import useUser from '@/hooks/useUser';
 
 const Home = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  const user = useUser();
 
   return (
     <Box sx={{ padding: 2, maxWidth: 700, mx: 'auto' }}>
@@ -15,6 +17,8 @@ const Home = () => {
         {t('pages.home.weatherButton')}
       </Button>
       <LanguageSelectorComponent />
+
+      <Typography>{t('pages.home.welcomeMessage', { name: user.getFullName() })}</Typography>
     </Box>
   );
 };
