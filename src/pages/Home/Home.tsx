@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/joy';
 import LanguageSelectorComponent from '@components/LanguageSelectorComponent/LanguageSelectorComponent';
+import TmpThemeSelectorComponent from '@/components/TmpThemeSelectorComponent/TmpThemeSelectorComponent';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router';
 import { Button } from '@mui/material';
@@ -15,6 +16,7 @@ const Home = () => {
         {t('pages.home.weatherButton')}
       </Button>
       <LanguageSelectorComponent />
+      <TmpThemeSelectorComponent />
     </Box>
   );
 };
