@@ -32,8 +32,10 @@ const Weather = () => {
           {t('pages.weather.getWeatherButton')}
         </Button>
       </Box>
-      <Typography level='body-md'>{t('pages.weather.weatherHeader')}:</Typography>
-      <Typography level='body-md'>
+      <Typography level="body-md">
+        {t('pages.weather.weatherHeader')}:
+      </Typography>
+      <Typography level="body-md">
         {t('pages.weather.temperature')}: {weather.temperature} °C
       </Typography>
       <LanguageSelectorComponent />
