@@ -1,4 +1,4 @@
-import { Box, Button, ButtonGroup, Typography } from '@mui/joy';
+import { Box, Button, ButtonGroup } from '@mui/joy';
 import { useColorScheme } from '@mui/joy';
 
 const TmpThemeSelectorComponent = () => {
@@ -9,11 +9,19 @@ const TmpThemeSelectorComponent = () => {
   return (
     <Box sx={{ display: 'flex', justifyContent: 'center', marginTop: 2 }}>
       <ButtonGroup>
-        <Button onClick={() => setMode('light')}>
-          <Typography>Light</Typography>
+        <Button
+          variant="solid"
+          color={mode === 'light' ? 'primary' : 'neutral'}
+          onClick={() => setMode('light')}
+        >
+          Light
         </Button>
-        <Button onClick={() => setMode('dark')}>
-          <Typography>Dark</Typography>
+        <Button
+          variant="solid"
+          color={mode === 'dark' ? 'primary' : 'neutral'}
+          onClick={() => setMode('dark')}
+        >
+          Dark
         </Button>
       </ButtonGroup>
     </Box>
