@@ -8,40 +8,19 @@ import { Provider } from 'react-redux';
 import store from '@stores/index.ts';
 
 const theme = createCustomTheme({
-  colorSchemes: {
-    light: {
-      palette: {
-        primary: {
-          500: '#your-primary-color',
-        },
-      },
-    },
-  },
-  components: {
-    JoyButton: {
-      styleOverrides: {
-        root: {
-          borderRadius: '8px',
-        },
-      },
-    },
-  },
+  // Optional: Override specific theme properties
 });
 
 type AppProps = {
   basename?: string;
 };
 
-/**
- * @param props - AppProps, also contains all customProps delivered from the rootUi
- */
-function App(props: AppProps) {
-  const { basename } = props;
+function App({ basename }: AppProps) {
   return (
     <Provider store={store}>
       <ThemeProvider theme={{ [MATERIAL_THEME_ID]: theme }}>
-        <JoyCssVarsProvider>
-          <BrowserRouter basename={basename ?? '/'}>
+        <JoyCssVarsProvider theme={theme}>
+          <BrowserRouter basename={basename}>
             <RoutingComponent />
           </BrowserRouter>
         </JoyCssVarsProvider>

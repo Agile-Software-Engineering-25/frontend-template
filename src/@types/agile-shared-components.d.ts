@@ -1,8 +1,7 @@
 declare module '@agile-software/shared-components' {
-  export const createCustomTheme: (config: Record<string, unknown>) =>
-    | { $$joy: Record<string, unknown> }
-    | {
-        cssVarPrefix?: string;
-        colorSchemes: Record<string, Record<string, unknown>>;
-      };
+  import { extendTheme } from '@mui/joy/styles';
+
+  export type CustomTheme = ReturnType<typeof extendTheme>;
+
+  export function createCustomTheme(config?: Partial<CustomTheme>): CustomTheme;
 }
