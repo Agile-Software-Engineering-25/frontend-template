@@ -69,6 +69,14 @@ const Home = () => {
             only for demonstration purposes.
           </Typography>
         </Alert>
+        <Alert color="warning" variant="soft" sx={{ mt: 3 }}>
+          <Typography color="warning" level="title-md">
+            Note
+          </Typography>
+          <Typography color="warning" level="body-md">
+            Make sure to use i18n in you real project. For Sample check <Link href="/weather">Weather</Link> page.
+          </Typography>
+        </Alert>
       </Box>
 
       {/* Typography Showcase */}
