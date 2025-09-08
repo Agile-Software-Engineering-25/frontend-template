@@ -21,6 +21,7 @@ const Home = () => {
       <Typography>
         {t('pages.home.welcomeMessage', { name: user.getFullName() })}
       </Typography>
+      <Typography>User ID: {user.getUserId()}</Typography>
       <Typography>E-Mail: {user.getEmail()}</Typography>
       <Typography sx={{ wordBreak: 'break-word' }}>Access Token: {user.getAccessToken()}</Typography>
       <Typography>
