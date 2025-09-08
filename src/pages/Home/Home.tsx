@@ -74,7 +74,8 @@ const Home = () => {
             Note
           </Typography>
           <Typography color="warning" level="body-md">
-            Make sure to use i18n in you real project. For Sample check <Link href="/weather">Weather</Link> page.
+            Make sure to use i18n in you real project. For Sample check{' '}
+            <Link href="/weather">Weather</Link> page.
           </Typography>
         </Alert>
       </Box>

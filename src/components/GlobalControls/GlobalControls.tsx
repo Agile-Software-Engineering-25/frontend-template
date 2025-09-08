@@ -80,7 +80,11 @@ const GlobalControls = () => {
         </Box>
         {showNavigation && (
           <Box sx={{ mt: 1, display: 'flex', flexDirection: 'column', gap: 1 }}>
-            <Button variant="soft" color="neutral" onClick={() => navigate('/')}>
+            <Button
+              variant="soft"
+              color="neutral"
+              onClick={() => navigate('/')}
+            >
               Homepage
             </Button>
             <Button
