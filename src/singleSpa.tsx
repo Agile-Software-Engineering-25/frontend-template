@@ -17,7 +17,7 @@ const lifecycle = singleSpaReact({
     const { getUser, ...appProps } = props;
 
     // Set user data globally for the hook
-    setGlobalUser(getUser?.() ?? null);
+    setGlobalUser(getUser ? getUser() : null);
 
     // Pass only non-user props to App
     return <App {...appProps} />;
