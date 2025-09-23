@@ -1,12 +1,24 @@
 import { jwtDecode } from 'jwt-decode';
 import { useAuthContext } from '@/context/AuthContext';
 
+// Minimal typings for the parts of the JWT we access
+type KeycloakRealmAccess = {
+  roles?: string[];
+};
+
+type DecodedToken = {
+  realm_access?: KeycloakRealmAccess;
+  resource_access?: Record<string, KeycloakRealmAccess>;
+  // Allow unknown extra fields without using `any`
+  [key: string]: unknown;
+};
+
 export const useUser = () => {
   const { user } = useAuthContext();
 
   const getUserId = (): string => {
     return user?.profile.sub ?? '';
-  }
+  };
 
   const getFirstName = (): string => {
     return user?.profile.given_name ?? '';
@@ -34,8 +46,8 @@ export const useUser = () => {
     if (!token) return false;
 
     // Decode JWT to extract roles
-    const decoded: any = jwtDecode(token);
-    const roles: string[] = decoded?.realm_access?.roles || [];
+    const decoded = jwtDecode<DecodedToken>(token);
+    const roles: string[] = decoded?.realm_access?.roles ?? [];
 
     if (!Array.isArray(roles) || roles.length === 0) return false;
     return roles.includes(role);
