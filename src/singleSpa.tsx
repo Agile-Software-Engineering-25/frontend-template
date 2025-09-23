@@ -4,6 +4,7 @@ import singleSpaReact from 'single-spa-react';
 import { cssLifecycleFactory } from 'vite-plugin-single-spa/ex';
 import App from './App';
 import { setGlobalUser } from './hooks/useUser';
+import { AUTH_USER_CHANGED_EVENT } from './constants/events';
 
 const lifecycle = singleSpaReact({
   React,
@@ -43,8 +44,8 @@ export const mount = [
         setGlobalUser(null);
       }
     };
-    window.addEventListener('auth:user-changed', handler);
-    removeAuthListener = () => window.removeEventListener('auth:user-changed', handler);
+  window.addEventListener(AUTH_USER_CHANGED_EVENT, handler);
+  removeAuthListener = () => window.removeEventListener(AUTH_USER_CHANGED_EVENT, handler);
 
     await lifecycle.mount(props);
   },
