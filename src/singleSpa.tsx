@@ -27,6 +27,33 @@ const lifecycle = singleSpaReact({
 // IMPORTANT: Because the file is named singleSpa.tsx, the string 'singleSpa'
 // must be passed to the call to cssLifecycleFactory.
 const cssLc = cssLifecycleFactory('singleSpa' /* optional factory options */);
+
+let removeAuthListener: (() => void) | undefined;
+
 export const bootstrap = [cssLc.bootstrap, lifecycle.bootstrap];
-export const mount = [cssLc.mount, lifecycle.mount];
-export const unmount = [cssLc.unmount, lifecycle.unmount];
+
+export const mount = [
+  cssLc.mount,
+  async (props: any) => {
+    // Subscribe to auth updates from root (token refresh, login, logout)
+    const handler = (e: Event) => {
+      const ce = e as CustomEvent;
+      setGlobalUser(ce.detail ?? null);
+    };
+    window.addEventListener('auth:user-changed', handler);
+    removeAuthListener = () => window.removeEventListener('auth:user-changed', handler);
+
+    await lifecycle.mount(props);
+  },
+];
+
+export const unmount = [
+  async (props: any) => {
+    // Cleanup listener
+    removeAuthListener?.();
+    removeAuthListener = undefined;
+
+    await lifecycle.unmount(props);
+  },
+  cssLc.unmount,
+];
