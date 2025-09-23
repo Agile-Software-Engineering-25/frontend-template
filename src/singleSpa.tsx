@@ -37,8 +37,11 @@ export const mount = [
   async (props: any) => {
     // Subscribe to auth updates from root (token refresh, login, logout)
     const handler = (e: Event) => {
-      const ce = e as CustomEvent;
-      setGlobalUser(ce.detail ?? null);
+      if (e instanceof CustomEvent) {
+        setGlobalUser(e.detail ?? null);
+      } else {
+        setGlobalUser(null);
+      }
     };
     window.addEventListener('auth:user-changed', handler);
     removeAuthListener = () => window.removeEventListener('auth:user-changed', handler);
