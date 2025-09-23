@@ -13,19 +13,18 @@ const lifecycle = singleSpaReact({
     return <div>Error: {message}</div>;
   },
   rootComponent: (props: any) => {
-    // Extract user from props and set it globally
-    const { user, ...appProps } = props;
+    // Get user via function provided by the root
+    const { getUser, ...appProps } = props;
 
     // Set user data globally for the hook
-    setGlobalUser(user);
+    setGlobalUser(getUser?.() ?? null);
 
     // Pass only non-user props to App
     return <App {...appProps} />;
   },
 });
-// IMPORTANT:  Because the file is named spa.tsx, the string 'spa'
-// must be passed to the call to cssLifecycleFactory.
-// IMPORTANT:  Because the file is named singleSpa.tsx, the string 'singleSpa'
+
+// IMPORTANT: Because the file is named singleSpa.tsx, the string 'singleSpa'
 // must be passed to the call to cssLifecycleFactory.
 const cssLc = cssLifecycleFactory('singleSpa' /* optional factory options */);
 export const bootstrap = [cssLc.bootstrap, lifecycle.bootstrap];
